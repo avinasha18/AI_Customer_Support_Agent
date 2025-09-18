@@ -364,4 +364,4 @@ For issues and questions:
 
 This application is **production-ready** and fully functional. Start the system and enjoy your AI-powered customer support chat application! 🚀
 
-**Live Demo**: [Frontend](https://your-frontend-url.onrender.com) | [Backend API](https://your-backend-url.onrender.com)
+**Live Demo**: [Frontend](https://support-virallens.vercel.app/) | [Backend API](https://ai-customer-support-agent-1.onrender.com/)
