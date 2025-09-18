@@ -23,7 +23,7 @@ services:
       - key: OPENROUTER_API_KEY
         sync: false
       - key: CORS_ORIGIN
-        value: https://virallens-chatbot-frontend.onrender.com
+        value: https://your-frontend-url.onrender.com
 
   # Frontend service
   - type: web
@@ -37,7 +37,7 @@ services:
     healthCheckPath: /
     envVars:
       - key: VITE_API_URL
-        value: https://virallens-chatbot-backend.onrender.com/api
+        value: https://ai-customer-support-agent-1.onrender.com/api
     buildCommand: echo "Building frontend..."
 
 databases:
