@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react"
 import { AnimatePresence, motion } from "framer-motion"
-import { Sparkles, MessageSquare, Zap, Shield, Users, ArrowRight, Lightbulb } from "lucide-react"
+import { Sparkles, MessageSquare, Zap, Shield, Users, ArrowRight, Lightbulb, ArrowUpLeft } from "lucide-react"
 import { useChat } from "../../contexts/ChatContext"
 import Message from "./Message"
 import TypingIndicator from "./TypingIndicator"
@@ -94,11 +94,12 @@ const MessageList = () => {
             >
               <motion.div
                 whileHover={{ scale: 1.02 }}
+                
                 className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg transition-all duration-300 flex items-center gap-3 opacity-90"
               >
                 <MessageSquare className="w-5 h-5" />
-                Start New Chat
-                <ArrowRight className="w-5 h-5" />
+                Click on New Chat to start a new conversation
+                <ArrowUpLeft className="w-5 h-5" />
               </motion.div>
               
               {conversations.length > 0 && (
