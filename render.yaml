@@ -21,9 +21,9 @@ services:
       - key: JWT_SECRET
         generateValue: true
       - key: OPENROUTER_API_KEY
-        value: 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
+        value: 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
       - key: CORS_ORIGIN
-        value: https://your-frontend-url.onrender.com
+        value: https://support-virallens.vercel.app
 
   # Frontend service
   - type: web
