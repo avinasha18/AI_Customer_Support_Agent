@@ -36,7 +36,7 @@ const ConfirmationModal = ({
       showCloseButton={!isLoading}
     >
       <div className="space-y-4">
-        <p className="professional-text text-secondary leading-relaxed">
+        <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
           {message}
         </p>
         
@@ -44,7 +44,7 @@ const ConfirmationModal = ({
           <button
             onClick={onClose}
             disabled={isLoading}
-            className="btn-secondary px-4 py-2 text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+            className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {cancelText}
           </button>
@@ -53,10 +53,10 @@ const ConfirmationModal = ({
             disabled={isLoading}
             className={`
               px-4 py-2 text-sm font-medium text-white rounded-lg transition-all duration-200
-              disabled:opacity-50 disabled:cursor-not-allowed hover-lift
+              disabled:opacity-50 disabled:cursor-not-allowed hover:opacity-90
               ${type === 'error' 
-                ? 'bg-gradient-to-r from-error to-error hover:from-error hover:to-error' 
-                : 'bg-gradient-to-r from-warning to-warning hover:from-warning hover:to-warning'
+                ? 'bg-red-500 hover:bg-red-600' 
+                : 'bg-yellow-500 hover:bg-yellow-600'
               }
             `}
           >

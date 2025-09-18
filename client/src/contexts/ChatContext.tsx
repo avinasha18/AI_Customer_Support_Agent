@@ -132,7 +132,7 @@ export const ChatProvider = ({ children }: ChatProviderProps) => {
 
   // Auto-select conversation logic after conversations are loaded
   useEffect(() => {
-    const handleAutoConversationSelection = async () => {
+    const handleAutoConversationSelection = () => {
       // Only run if we have conversations loaded and no active conversation
       if (conversations.length > 0 && !activeConversationId) {
         // Sort by updatedAt to get the most recent conversation
@@ -142,19 +142,12 @@ export const ChatProvider = ({ children }: ChatProviderProps) => {
         const mostRecentConversation = sortedConversations[0];
         console.log('Auto-selecting most recent conversation:', mostRecentConversation.id);
         setActiveConversationId(mostRecentConversation.id);
-      } else if (conversations.length === 0 && !activeConversationId) {
-        // No conversations exist, create a new one automatically
-        console.log('No conversations found, auto-creating new conversation');
-        try {
-          await createConversation();
-        } catch (error) {
-          console.error('Failed to auto-create conversation:', error);
-        }
       }
+      // If no conversations exist, just show the welcome page - no auto-creation
     };
 
     handleAutoConversationSelection();
-  }, [conversations, activeConversationId, createConversation]);
+  }, [conversations, activeConversationId]);
 
   const loadConversations = async (): Promise<void> => {
     try {
@@ -307,8 +300,17 @@ export const ChatProvider = ({ children }: ChatProviderProps) => {
           }
         },
         (conversationId: string) => {
-          // Conversation completed - no special handling needed since conversation is already in DB
-          console.log('Conversation completed:', conversationId);
+          // This callback is called in two cases:
+          // 1. When conversation is created (conversationId is provided) - don't reset isTyping
+          // 2. When streaming ends (conversationId is empty) - reset isTyping
+          if (conversationId === '') {
+            // Streaming ended with [DONE] - hide typing indicator
+            console.log('Streaming completed');
+            setIsTyping(false);
+          } else {
+            // Conversation created - keep typing indicator
+            console.log('Conversation created:', conversationId);
+          }
         },
         (error: string) => {
           console.error('Streaming error:', error, {

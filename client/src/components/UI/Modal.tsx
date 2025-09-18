@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import type { ReactNode } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 
@@ -6,7 +7,7 @@ interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   title: string;
-  children: React.ReactNode;
+  children: ReactNode;
   type?: 'info' | 'warning' | 'error' | 'success';
   showCloseButton?: boolean;
 }
@@ -44,28 +45,28 @@ const Modal = ({
         return {
           icon: '❌',
           iconBg: 'bg-red-100 dark:bg-red-900/30',
-          iconColor: 'text-error',
+          iconColor: 'text-red-600 dark:text-red-400',
           borderColor: 'border-red-200 dark:border-red-700'
         };
       case 'warning':
         return {
           icon: '⚠️',
           iconBg: 'bg-yellow-100 dark:bg-yellow-900/30',
-          iconColor: 'text-warning',
+          iconColor: 'text-yellow-600 dark:text-yellow-400',
           borderColor: 'border-yellow-200 dark:border-yellow-700'
         };
       case 'success':
         return {
           icon: '✅',
           iconBg: 'bg-green-100 dark:bg-green-900/30',
-          iconColor: 'text-success',
+          iconColor: 'text-green-600 dark:text-green-400',
           borderColor: 'border-green-200 dark:border-green-700'
         };
       default:
         return {
           icon: 'ℹ️',
           iconBg: 'bg-blue-100 dark:bg-blue-900/30',
-          iconColor: 'text-accent-primary',
+          iconColor: 'text-blue-600 dark:text-blue-400',
           borderColor: 'border-blue-200 dark:border-blue-700'
         };
     }
@@ -97,7 +98,7 @@ const Modal = ({
             onClick={(e) => e.stopPropagation()}
           >
             <div className={`
-              w-full max-w-md modal-professional rounded-xl shadow-xl
+              w-full max-w-md bg-white dark:bg-gray-800 rounded-xl shadow-xl
               border ${typeStyles.borderColor}
               max-h-[90vh] overflow-hidden
             `}>
@@ -110,16 +111,16 @@ const Modal = ({
                   <span className="text-lg">{typeStyles.icon}</span>
                 </div>
                 <div className="flex-1">
-                  <h2 className="professional-heading text-lg text-primary">
+                  <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
                     {title}
                   </h2>
                 </div>
                 {showCloseButton && (
                   <button
                     onClick={onClose}
-                    className="p-2 hover:bg-hover rounded-lg transition-colors"
+                    className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
                   >
-                    <X className="w-5 h-5 text-tertiary" />
+                    <X className="w-5 h-5 text-gray-500 dark:text-gray-400" />
                   </button>
                 )}
               </div>

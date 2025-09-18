@@ -16,3 +16,5 @@ logs
 .cursorrules
 .cursorignore
 .cursorignore
+client/.env
+server/.env
